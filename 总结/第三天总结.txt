@@ -1,0 +1,13 @@
+1.定义接口是interface  
+2.可选属性符号： ？ 例：interface SquareConfig {
+  color?: string;
+  width?: number;
+}
+3.只读属性： readonly  例：interface Point {
+    readonly x: number;
+    readonly y: number;
+}你可以通过赋值一个对象字面量来构造一个Point。 赋值后， x和y再也不能被改变了。
+4. 为什么const 声明的对象可以修改呀?
+const定义的基本数据类型的变量确实不能修改,修改的是引用数据类型，因为对象是引用类型的，
+const仅保证指针不发生改变，修改对象的属性不会改变对象的指针，所以是被允许的。也就是说const定义的引用类型只要指针不发生改变，其他的不论如何改变都是允许的。
+5.

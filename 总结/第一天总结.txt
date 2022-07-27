@@ -1,0 +1,12 @@
+1.typeScript是一个开源的编程语言， 它是javascript的一个超集。
+2.typescript在javescript的基础上添加了可选的静态类型和基于类的面向对象编程。
+3.typescript的优点：增加了代码的可读性和可维护性  ， 非常包容 ，拥有活跃的社区，兼容性很强，拥有最新的ECMAScript标准 与时俱进，可以提早知道错误在哪里，而不是等着js运行后再去看错误。
+4.typescript的缺点：有一定的学习成本，需要理解接口，泛型，类，枚举类型等，短时间内会增加开发成本，可能和一些库的结合不是很完美，集成到构建流程需要一定的工作量。
+5.动态类型语言：指在运动时才会进行类型检查，这种语言的类型错误往往会导致运行时错误，javascript是一门解释型语言，没有编译阶段，所以它是动态类型。
+6.静态类型：指编译阶段就能确定每个变量的类型，这种语言类型错误往往会导致语法错误。
+7.如何理解强类型和弱类型语言：类型系统是按照【是否允许隐式类型转换】来分类的。
+8.typescript是完全兼容javascript的，他不会修改javascript运行时的特性，所以它们都是弱类型。
+9.全局安装typescript:    npm install -g typescript。检测是否安装成功：  tsc -v  // Version 版本号 证明安装成功。
+10.编译typescript文件：   tsc  文件名
+11.ts的数据类型：数字类型（number）布尔值（boolean）字符串（string）数组（Array）undefined   null类型  元组 （Tuple）枚举（enum）  any类型  void类型  never类型  unknown类型
+12.  & 交叉类型   | 联合类型  ？可选属性

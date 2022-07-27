@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="box">
+
+        <div class="box1">
+            <img src="./lALPJwY7Tq30RH3NAh7NApA_656_542.png_720x720q90g.jpg" class="img1">
+            <button class="btn">TODOLIST</button>
+        </div>
+        <div class="box2">
+            ~ Today I need to ~
+        </div>
+        <input type="text" class="in">
+        <button class="btn1">submit</button>
+        <ul>
+
+        </ul>
+        <div class="footer">
+            <button class="shu">计数</button>
+            <button class="xian">显示选中的</button>
+            <button class="yin">隐藏没选中的</button>
+            <button class="qing">清空</button>
+        </div>
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .box {
+        width: 330px;
+        height: 550px;
+        background-color: antiquewhite;
+        margin: auto;
+        position: relative;
+    }
+    
+    .footer {
+        width: 330px;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        bottom: 293px;
+    }
+    
+    .xian {
+        display: none;
+    }
+    
+    .yin {
+        display: none;
+    }
+    
+    .qing {
+        display: none;
+    }
+    
+    .img1 {
+        width: 100px;
+        height: 120px;
+        position: absolute;
+        left: 42px;
+        top: 30px;
+    }
+    
+    .btn {
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background-color: chocolate;
+        color: white;
+        position: absolute;
+        left: 50%;
+        top: 80px;
+        transform: rotate(15deg);
+        border-radius: 10px;
+    }
+    
+    .box1 {
+        width: 100%;
+        height: 200px;
+    }
+    
+    .box2 {
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .in {
+        width: 240px;
+        border: 0;
+        border-bottom: 3px dashed yellowgreen;
+        background-color: antiquewhite;
+        margin-top: 30px;
+        outline: none;
+    }
+    
+    .btn1 {
+        width: 60px;
+        height: 20px;
+        background-color: white;
+    }
+    
+    ul {
+        width: 100%;
+        list-style: none;
+        background-color: antiquewhite;
+        margin-top: 10px;
+    }
+    
+    li {
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        margin-top: 5px;
+    }
+    
+    .fx {
+        float: left;
+        margin: 10px 0;
+    }
+    
+    .del {
+        float: right;
+    }
+    
+    .yan {
+        background-color: blueviolet;
+        text-decoration: line-through;
+        color: white;
+        transform: rotatex(180deg);
+        transition: 1s;
+    }
+</style>
+<script>
+    // 获取需要的元素
+    var btn = document.querySelector('.btn1')
+    var ul = document.querySelector('ul')
+    var input = document.querySelector('.in')
+    var fx = document.querySelector('.fx')
+    var xian = document.querySelector('.xian')
+    var yin = document.querySelector('.yin')
+    var qing = document.querySelector('.qing')
+
+
+
+
+    var vcolor = ['red', 'blue', 'green', 'yellow', 'orange', 'pink', 'purple']
+
+    // 给按钮添加点击事件
+    btn.onclick = function() {
+            // 判断内容不为空
+            if (input.value.trim() == "") {
+                // 弹框提示
+                alert('内容不能为空')
+            } else {
+
+                // 创建元素
+                var li = document.createElement('li')
+                    // 添加元素
+                li.innerHTML = `<input type="checkbox" class='fx'>${input.value}<a class='del'>x</a>`
+                ul.appendChild(li)
+                    // 清空文本框
+                input.value = ''
+            }
+        }
+        // 键盘事件
+    input.onkeyup = function(e) {
+            // 判断是否为回车键
+            if (e.keyCode == 13) {
+                if (input.value.trim() == "") {
+                    // 弹框提示
+                    alert('内容不能为空')
+                } else {
+                    // 创建元素
+                    var li = document.createElement('li')
+                        // 添加元素
+                    li.innerHTML = `<input type="checkbox" class='fx'>${input.value}<a class='del'>x</a>`
+                    ul.appendChild(li)
+                        // 清空文本框
+                    input.value = ''
+                }
+            }
+        }
+        //事件委托 删除   ---实际执行的是子元素  e.target  目标：点删除
+    ul.addEventListener('click', function(e) {
+            if (e.target.className == 'del') {
+                // 删除标签
+                e.target.parentNode.parentNode.removeChild(e.target.parentNode);
+            }
+        })
+        // 选中复选框
+    ul.addEventListener('click', function(e) {
+            if (e.target.className == 'fx') {
+                if (e.target.checked == true) {
+                    e.target.parentNode.className = 'yan'
+                    xian.style.display = 'block'
+                    yin.style.display = 'block'
+                    qing.style.display = 'block'
+                } else {
+                    e.target.parentNode.className = ''
+                    xian.style.display = 'none'
+                    yin.style.display = 'none'
+                    qing.style.display = 'none'
+                }
+
+            }
+        })
+        // 清空
+    qing.onclick = function() {
+        ul.innerHTML = ''
+    }
+</script>

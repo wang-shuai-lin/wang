@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" name="form">
+        <input type="text" name="name1" value="降龙十八掌">
+        <input type="text" name="name2" value="排云掌">
+        <p align="center">
+            恭喜你被选中了武学秘籍 <input type="text" id="result" value="" class="inp">
+        </p>
+        <input type="button" value="one" onclick="kai()" id="btn1"><br>
+        <input type="button" value="to" onclick="kai1()" id="btn2">
+    </form>
+
+</body>
+<script>
+    var arr = ["降龙十八掌", "排云掌", "风神腿", "降龙腿", "天霜拳", "三分归元气", "圣心决", "五雷化极手", "傲寒六决", '圣灵剑法', '如来神掌', '回元血手', '万剑归宗', '万象森罗', '', '神刀斩', '水神决', '莫名剑法', '龙神功', '回天冰决', '玄武真功', '天外飞仙', '一剑西来', '灵犀一指'];
+    var result = document.getElementById('result');
+    var btn1 = document.getElementById('btn1');
+    var btn2 = document.getElementById('btn2')
+    var timer;
+    var sped = 200
+
+
+    function kai() {
+        roll(sped);
+        if (btn1.value == "one") {
+            btn1.value = "停止"
+
+            result.value = "";
+        } else if (btn1.value == "停止") {
+            btn1.value = "one";
+            setTimeout(timer); //当点击停止时同时也让定时器停止
+
+            result.value = arr[Math.floor(Math.random() * 24)];
+        }
+    }
+
+    function kai1() {
+        roll(sped);
+        if (btn2.value == 'to') {
+            btn2.value = "停止"
+            result.value = "";
+        } else if (btn2.value == '停止') {
+            btn2.value = 'to'
+            setTimeout(timer); //当点击停止时同时也让定时器停止
+            result.value = `${arr[Math.floor(Math.random() * 24)]}  ${arr[Math.floor(Math.random() * 24)]}`;
+            console.log(result.value);
+        }
+    }
+
+    function roll(sped) {
+        if (btn1.value == "停止") {
+
+            document.form.name1.value = arr[Math.floor(Math.random() * 24)];
+        }
+        if (btn2.value == "停止") {
+            document.form.name1.value = arr[Math.floor(Math.random() * 24)];
+            document.form.name2.value = arr[Math.floor(Math.random() * 24)];
+        }
+        timer = setTimeout("roll(sped)", 50); //定时器：让roll()函数每隔50ms执行一次，直至定时器停止
+    }
+</script>
+
+</html>
+<style type="text/css">
+    form {
+        width: 1000px;
+        margin: 100px auto;
+        font-size: 18px;
+        color: red;
+        text-align: center;
+    }
+    
+    input[type="text"] {
+        width: 200px;
+        height: 30px;
+        line-height: 30px;
+        outline: none;
+        font-size: 18px;
+        color: red;
+        text-align: center;
+        background-color: gold;
+        border: 0;
+        font-weight: 900;
+    }
+    
+    input[type="button"] {
+        font-size: 18px;
+        color: #fff;
+        background-color: #007AFF;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        width: 100px;
+        display: block;
+        border-radius: 20px;
+        height: 40px;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+    
+    p {
+        margin: auto;
+        margin-top: 30px;
+        font-weight: 900;
+    }
+    
+    .inp {
+        background-color: white !important;
+        border: 2px solid purple !important;
+    }
+</style>
