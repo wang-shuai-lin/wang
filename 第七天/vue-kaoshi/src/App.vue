@@ -26,7 +26,7 @@
     <div class="flxe">
       <div>
         每页
-        <input type="text" v-model="paji">
+        <input type="number" v-model="paji">
         条
         <span>总共10条</span>
       </div>
@@ -84,11 +84,11 @@ export default {
     shang() {
       this.bh = !this.bh
       if (this.bh == false) {
-        this.data.sort(function (a, b) {
+        this.shou.sort(function (a, b) {
           return b.id - a.id
         })
       } else {
-        this.data.sort(function (a, b) {
+        this.shou.sort(function (a, b) {
           return a.id - b.id
         })
       }
@@ -97,11 +97,11 @@ export default {
     jia() {
       this.jg = !this.jg
       if (this.jg == false) {
-        this.data.sort(function (a, b) {
+        this.shou.sort(function (a, b) {
           return b.price - a.price
         })
       } else {
-        this.data.sort(function (a, b) {
+        this.shou.sort(function (a, b) {
           return a.price - b.price
         })
       }
@@ -109,7 +109,7 @@ export default {
     // 分页
     add(item) {
       this.pad = item
-
+// 当前总页数=总数居的总长度/每页条数
       this.paye = Math.ceil(this.data.length / this.paji)
       var list = (this.pad - 1) * Number(this.paji)// 每去一组数据的第一个索引
       this.shou = this.data.slice(list, list + Number(this.paji)) // 从总数据中取出每页的数据
@@ -134,7 +134,7 @@ export default {
       if (this.paji !== '') {
 
         this.paye = Math.ceil(this.data.length / this.paji)
-        this.add(1)
+        this.add(this.pad)
       }
 
     },
